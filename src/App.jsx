@@ -4,6 +4,7 @@ import Stats from './components/Stats'
 import Product from './components/Product'
 import HowItWorks from './components/HowItWorks'
 import Values from './components/Values'
+import Gallery from './components/Gallery'
 import Team from './components/Team'
 import Pricing from './components/Pricing'
 import CTA from './components/CTA'
@@ -19,6 +20,7 @@ export default function App() {
         <Product />
         <HowItWorks />
         <Values />
+        <Gallery />
         <Team />
         <Pricing />
         <CTA />
