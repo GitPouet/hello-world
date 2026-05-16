@@ -103,7 +103,7 @@ export default function Stats() {
               <div style={{ fontSize: '32px', marginBottom: '16px' }}>{icon}</div>
               <div style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(36px, 5vw, 52px)',
+                fontSize: 'clamp(32px, 8vw, 52px)',
                 fontWeight: 800,
                 color: 'var(--cyan)',
                 lineHeight: 1,

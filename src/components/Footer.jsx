@@ -198,8 +198,9 @@ export default function Footer() {
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            fontSize: '13px',
+            flexWrap: 'wrap',
+            gap: '6px',
+            fontSize: '12px',
             color: 'var(--gray)',
           }}>
             <span>Créé avec ❤️ par des élèves de 3ème</span>

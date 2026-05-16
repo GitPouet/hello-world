@@ -53,7 +53,7 @@ function ProductShape({ product, isActive }) {
       background: isActive ? product.bg : 'rgba(255,255,255,0.03)',
       border: `2px solid ${isActive ? product.border : 'rgba(255,255,255,0.06)'}`,
       borderRadius: '24px',
-      fontSize: '80px',
+      fontSize: 'clamp(48px, 12vw, 80px)',
       color: isActive ? product.color : 'var(--gray)',
       transition: 'all 0.4s ease',
       boxShadow: isActive ? `0 0 60px ${product.bg}` : 'none',
@@ -159,7 +159,7 @@ export default function Product() {
               >
                 <h3 style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '40px',
+                  fontSize: 'clamp(28px, 8vw, 40px)',
                   fontWeight: 800,
                   color: current.color,
                   marginBottom: '16px',
@@ -212,7 +212,7 @@ export default function Product() {
                 <div style={{ fontSize: '13px', color: 'var(--gray)', marginBottom: '4px' }}>À partir de</div>
                 <div style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '44px',
+                  fontSize: 'clamp(32px, 9vw, 44px)',
                   fontWeight: 800,
                   color: 'var(--cyan)',
                   lineHeight: 1,

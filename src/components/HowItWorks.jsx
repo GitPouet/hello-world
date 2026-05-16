@@ -111,14 +111,16 @@ export default function HowItWorks() {
               {/* Step number */}
               <div style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: '72px',
+                fontSize: 'clamp(40px, 10vw, 72px)',
                 fontWeight: 800,
                 color: 'rgba(0,200,232,0.08)',
                 position: 'absolute',
                 top: '16px',
-                right: '24px',
+                right: '16px',
                 lineHeight: 1,
                 userSelect: 'none',
+                overflow: 'hidden',
+                maxWidth: '50%',
               }}>
                 {n}
               </div>
@@ -162,7 +164,7 @@ export default function HowItWorks() {
 
       <style>{`
         @media (max-width: 768px) {
-          .steps-grid { grid-template-columns: 1fr !important; }
+          .steps-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
           .steps-connector { display: none; }
         }
       `}</style>

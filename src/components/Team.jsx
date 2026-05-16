@@ -98,8 +98,8 @@ export default function Team() {
           >
             <div style={{
               background: 'var(--gradient-blue)',
-              borderRadius: '32px',
-              padding: '48px',
+              borderRadius: '24px',
+              padding: 'clamp(24px, 6vw, 48px)',
               position: 'relative',
               overflow: 'hidden',
             }}>
@@ -126,7 +126,7 @@ export default function Team() {
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <div style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '80px',
+                  fontSize: 'clamp(48px, 15vw, 80px)',
                   fontWeight: 800,
                   color: 'rgba(255,255,255,0.12)',
                   lineHeight: 1,
@@ -136,7 +136,7 @@ export default function Team() {
                 </div>
                 <h3 style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '28px',
+                  fontSize: 'clamp(20px, 5vw, 28px)',
                   fontWeight: 800,
                   color: 'var(--white)',
                   marginBottom: '8px',

@@ -69,7 +69,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <span style={{
+            <span className="hero-badge" style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
@@ -83,6 +83,8 @@ export default function Hero() {
               textTransform: 'uppercase',
               color: 'var(--cyan)',
               marginBottom: '24px',
+              maxWidth: '100%',
+              flexWrap: 'wrap',
             }}>
               <span style={{
                 width: '6px', height: '6px',
@@ -91,7 +93,7 @@ export default function Hero() {
                 flexShrink: 0,
                 animation: 'pulse 2s infinite',
               }} />
-              Projet entrepreneurial — Occitanie 2025–2026
+              <span className="hero-badge-text">Projet entrepreneurial — Occitanie 2025–2026</span>
             </span>
           </motion.div>
 
@@ -228,6 +230,12 @@ export default function Hero() {
           .hero-ctas { flex-direction: column; }
           .hero-ctas a { text-align: center; }
           .hero-stats { gap: 20px; }
+          .hero-badge { letter-spacing: 0.5px; font-size: 9px !important; padding: 5px 10px !important; }
+          .hero-badge-text { word-break: break-word; }
+        }
+        @media (max-width: 480px) {
+          .hero-badge { letter-spacing: 0px; }
+          .hero-badge-text::after { content: none; }
         }
       `}</style>
     </section>

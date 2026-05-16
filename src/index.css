@@ -30,6 +30,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: clip;
 }
 
 body {
@@ -37,7 +38,13 @@ body {
   background: var(--dark);
   color: var(--white);
   overflow-x: hidden;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
+}
+
+section, header, footer, main, nav {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 ::selection {

@@ -132,7 +132,7 @@ export default function Pricing() {
               <div style={{ marginBottom: '8px' }}>
                 <span style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '52px',
+                  fontSize: 'clamp(36px, 10vw, 52px)',
                   fontWeight: 800,
                   color: 'var(--white)',
                   lineHeight: 1,
