@@ -1,7 +1,17 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 const Canvas3D = lazy(() => import('./Canvas3D'))
+
+function useIsMobile() {
+  const [mobile, setMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768)
+  useEffect(() => {
+    const check = () => setMobile(window.innerWidth < 768)
+    window.addEventListener('resize', check, { passive: true })
+    return () => window.removeEventListener('resize', check)
+  }, [])
+  return mobile
+}
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -9,6 +19,8 @@ const fadeUp = {
 }
 
 export default function Hero() {
+  const isMobile = useIsMobile()
+
   return (
     <section style={{
       position: 'relative',
@@ -18,10 +30,12 @@ export default function Hero() {
       overflow: 'hidden',
       background: 'var(--gradient-hero)',
     }}>
-      {/* 3D canvas */}
-      <Suspense fallback={null}>
-        <Canvas3D />
-      </Suspense>
+      {/* 3D canvas — desktop only */}
+      {!isMobile && (
+        <Suspense fallback={null}>
+          <Canvas3D />
+        </Suspense>
+      )}
 
       {/* Gradient overlay bottom */}
       <div style={{
@@ -47,7 +61,7 @@ export default function Hero() {
       }} />
 
       {/* Content */}
-      <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '100px' }}>
+      <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '100px', paddingBottom: '80px' }}>
         <div style={{ maxWidth: '720px' }}>
           <motion.div
             {...fadeUp}
@@ -62,18 +76,19 @@ export default function Hero() {
               background: 'rgba(0,200,232,0.1)',
               border: '1px solid rgba(0,200,232,0.25)',
               borderRadius: '100px',
-              padding: '6px 16px',
-              fontSize: '12px',
+              padding: '6px 14px',
+              fontSize: '11px',
               fontWeight: 500,
               letterSpacing: '1.5px',
               textTransform: 'uppercase',
               color: 'var(--cyan)',
-              marginBottom: '32px',
+              marginBottom: '24px',
             }}>
               <span style={{
                 width: '6px', height: '6px',
                 background: 'var(--cyan)',
                 borderRadius: '50%',
+                flexShrink: 0,
                 animation: 'pulse 2s infinite',
               }} />
               Projet entrepreneurial — Occitanie 2025–2026
@@ -85,10 +100,10 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
             style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(48px, 8vw, 90px)',
+              fontSize: 'clamp(44px, 10vw, 90px)',
               fontWeight: 800,
               lineHeight: 0.95,
-              marginBottom: '28px',
+              marginBottom: '24px',
               letterSpacing: '-2px',
             }}
           >
@@ -107,11 +122,11 @@ export default function Hero() {
             {...fadeUp}
             transition={{ duration: 0.6, delay: 0.5 }}
             style={{
-              fontSize: 'clamp(16px, 2vw, 20px)',
+              fontSize: 'clamp(15px, 2.5vw, 19px)',
               fontWeight: 300,
               color: 'var(--gray-light)',
               lineHeight: 1.7,
-              marginBottom: '44px',
+              marginBottom: '36px',
               maxWidth: '520px',
             }}
           >
@@ -122,15 +137,16 @@ export default function Hero() {
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.6, delay: 0.65 }}
-            style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}
+            className="hero-ctas"
+            style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}
           >
-            <a href="#commander" className="btn-primary" style={{ fontSize: '16px', padding: '18px 40px' }}>
+            <a href="#commander" className="btn-primary" style={{ fontSize: '15px', padding: '16px 36px' }}>
               Commander maintenant
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
-            <a href="#produit" className="btn-secondary">
+            <a href="#produit" className="btn-secondary" style={{ fontSize: '15px' }}>
               Voir le produit
             </a>
           </motion.div>
@@ -138,11 +154,12 @@ export default function Hero() {
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.6, delay: 0.8 }}
+            className="hero-stats"
             style={{
               display: 'flex',
-              gap: '32px',
-              marginTop: '60px',
-              paddingTop: '40px',
+              gap: '24px',
+              marginTop: '48px',
+              paddingTop: '32px',
               borderTop: '1px solid rgba(255,255,255,0.08)',
               flexWrap: 'wrap',
             }}
@@ -155,13 +172,13 @@ export default function Hero() {
               <div key={label}>
                 <div style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: 'clamp(24px, 3vw, 32px)',
+                  fontSize: 'clamp(22px, 4vw, 32px)',
                   fontWeight: 800,
                   color: 'var(--cyan)',
                 }}>
                   {value}
                 </div>
-                <div style={{ fontSize: '13px', color: 'var(--gray)', marginTop: '2px' }}>
+                <div style={{ fontSize: '12px', color: 'var(--gray)', marginTop: '2px' }}>
                   {label}
                 </div>
               </div>
@@ -206,6 +223,11 @@ export default function Hero() {
         @keyframes scrollBounce {
           0%, 100% { transform: scaleY(1); opacity: 1; }
           50% { transform: scaleY(0.6); opacity: 0.5; }
+        }
+        @media (max-width: 768px) {
+          .hero-ctas { flex-direction: column; }
+          .hero-ctas a { text-align: center; }
+          .hero-stats { gap: 20px; }
         }
       `}</style>
     </section>

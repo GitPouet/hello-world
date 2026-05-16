@@ -126,10 +126,10 @@ export default function Values() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
           .values-grid { grid-template-columns: 1fr !important; }
         }
-        @media (max-width: 1024px) {
+        @media (min-width: 601px) and (max-width: 1024px) {
           .values-grid { grid-template-columns: 1fr 1fr !important; }
         }
       `}</style>

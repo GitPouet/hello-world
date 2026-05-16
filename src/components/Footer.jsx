@@ -48,7 +48,7 @@ export default function Footer() {
               du programme Entreprendre Pour Apprendre.
             </p>
 
-            <div style={{
+            <div className="footer-social" style={{
               display: 'flex',
               gap: '12px',
               marginTop: '24px',
@@ -183,7 +183,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div style={{
+        <div className="footer-bottom" style={{
           paddingTop: '32px',
           borderTop: '1px solid rgba(255,255,255,0.05)',
           display: 'flex',
@@ -211,7 +211,9 @@ export default function Footer() {
 
       <style>{`
         @media (max-width: 768px) {
-          .footer-grid { grid-template-columns: 1fr !important; }
+          .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+          .footer-bottom { flex-direction: column !important; text-align: center; }
+          .footer-social a { min-width: 48px !important; min-height: 48px !important; }
         }
       `}</style>
     </footer>

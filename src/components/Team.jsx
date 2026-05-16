@@ -147,7 +147,7 @@ export default function Team() {
                   Poussan, Hérault — Occitanie
                 </p>
 
-                <div style={{
+                <div className="team-stats-grid" style={{
                   display: 'grid',
                   gridTemplateColumns: '1fr 1fr',
                   gap: '12px',
@@ -185,7 +185,8 @@ export default function Team() {
 
       <style>{`
         @media (max-width: 768px) {
-          .team-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .team-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .team-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
     </section>

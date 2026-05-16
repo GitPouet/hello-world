@@ -82,6 +82,7 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
+              className={highlight ? 'pricing-card-highlight' : ''}
               style={{
                 background: highlight
                   ? 'linear-gradient(160deg, #0A2A80 0%, #0D1F60 100%)'
@@ -205,7 +206,8 @@ export default function Pricing() {
 
       <style>{`
         @media (max-width: 900px) {
-          .pricing-grid { grid-template-columns: 1fr !important; }
+          .pricing-grid { grid-template-columns: 1fr !important; max-width: 480px; margin: 0 auto; }
+          .pricing-card-highlight { transform: scale(1) !important; }
         }
       `}</style>
     </section>

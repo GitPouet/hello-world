@@ -114,7 +114,7 @@ export default function Product() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div style={{
+            <div className="product-shapes-grid" style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '16px',
@@ -228,7 +228,10 @@ export default function Product() {
 
       <style>{`
         @media (max-width: 768px) {
-          .product-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .product-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+        }
+        @media (max-width: 480px) {
+          .product-shapes-grid { grid-template-columns: repeat(2, minmax(0, 130px)) !important; justify-content: center; }
         }
       `}</style>
     </section>

@@ -103,7 +103,7 @@ export default function CTA() {
               </p>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} style={{
+            <form onSubmit={handleSubmit} className="cta-form" style={{
               display: 'flex',
               gap: '12px',
               maxWidth: '520px',
@@ -118,13 +118,13 @@ export default function CTA() {
                 onChange={e => setEmail(e.target.value)}
                 style={{
                   flex: '1',
-                  minWidth: '240px',
+                  minWidth: '200px',
                   padding: '16px 24px',
                   background: 'rgba(255,255,255,0.05)',
                   border: '1px solid rgba(255,255,255,0.12)',
                   borderRadius: '100px',
                   color: 'var(--white)',
-                  fontSize: '15px',
+                  fontSize: '16px',
                   fontFamily: 'var(--font-body)',
                   outline: 'none',
                   transition: 'border-color 0.2s',
@@ -132,7 +132,7 @@ export default function CTA() {
                 onFocus={e => e.target.style.borderColor = 'var(--cyan)'}
                 onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.12)'}
               />
-              <button type="submit" className="btn-primary" style={{ padding: '16px 32px' }}>
+              <button type="submit" className="btn-primary cta-btn" style={{ padding: '16px 32px' }}>
                 Je commande
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -143,7 +143,7 @@ export default function CTA() {
 
           <div style={{
             display: 'flex',
-            gap: '32px',
+            gap: '16px',
             justifyContent: 'center',
             flexWrap: 'wrap',
             marginTop: '32px',
@@ -168,6 +168,13 @@ export default function CTA() {
           </div>
         </motion.div>
       </div>
+      <style>{`
+        @media (max-width: 600px) {
+          .cta-form { flex-direction: column; }
+          .cta-form input { min-width: unset; width: 100%; border-radius: 14px; }
+          .cta-btn { width: 100%; border-radius: 14px; }
+        }
+      `}</style>
     </section>
   )
 }

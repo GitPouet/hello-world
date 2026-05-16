@@ -145,7 +145,7 @@ export default function Navbar() {
       <style>{`
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
-          .mobile-menu-btn { display: block !important; }
+          .mobile-menu-btn { display: flex !important; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
         }
       `}</style>
     </>
